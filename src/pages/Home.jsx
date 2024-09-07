@@ -18,6 +18,16 @@ function Home() {
     }
   };
 
+  const handleEnter = (event) =>{
+    if (event.key === "Enter" && recipe.length >= 3){
+      dispatch(getRecipe(recipe))
+    }
+    else if(event.key === "Enter" && recipe.length <3){
+      alert("Add At Least Three Words\n")
+    }
+
+  }
+
   return (
     <div className="w-full h-screen">
       <div className="w-full flex justify-center gap-4 py-2">
@@ -26,6 +36,7 @@ function Home() {
           className="w-[40%] h-12 border-2 rounded-xl px-2 py-1 text-lg outline-none"
           placeholder="Search Your Recipe"
           onChange={(e) => setRecipe(e.currentTarget.value)}
+          onKeyDown={(event)=>{handleEnter(event)}}
         />
         <button
           className="px-4 py-2 bg-green-400 hover:bg-green-300 text-white rounded-lg font-semibold "
